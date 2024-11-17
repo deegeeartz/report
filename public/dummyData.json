@@ -1,0 +1,156 @@
+{
+  "surveyReports": [
+    {
+      "id": 1,
+      "client": "Hotel Sunshine",
+      "responses": {
+        "reception": {
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
+          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
+          "question3": { "answer": "NA", "image": "", "video": "" },
+          "question4": { "answer": "yes", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "roomService": {
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "security": {
+          "question1": { "answer": "no", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "NA", "image": "", "video": "" },
+          "question4": { "answer": "yes", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "cleanliness": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "foodService": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "facilities": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "yes", "image": "", "video": "" },
+          "question5": { "answer": "NA", "image": "", "video": "" }
+        },
+        "staff": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "yes", "image": "", "video": "" },
+          "question5": { "answer": "NA", "image": "", "video": "" }
+        },
+        "amenities": {
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "location": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "valueForMoney": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "client": "Resort Paradise",
+      "responses": {
+        "reception": {
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "no", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "roomService": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "security": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "cleanliness": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "foodService": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "facilities": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "staff": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "amenities": {
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        },
+        "location": {
+          "question1": { "answer": "yes", "image": "", "video": "" },
+          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "yes", "image": "", "video": "" }
+        },
+        "valueForMoney": {
+          "question1": { "answer": "no", "image": "", "video": "" },
+          "question2": { "answer": "yes", "image": "", "video": "" },
+          "question3": { "answer": "yes", "image": "", "video": "" },
+          "question4": { "answer": "NA", "image": "", "video": "" },
+          "question5": { "answer": "no", "image": "", "video": "" }
+        }
+      }
+    }
+  ]
+}
