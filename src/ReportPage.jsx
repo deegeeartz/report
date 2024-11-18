@@ -6,6 +6,29 @@ import Fullscreen from 'react-fullscreen-crossbrowser';
 import './ReportPage.css';
 import { calculateStatistics, fetchSurveyData, calculateAverageStatistics } from './utils';
 import { getRatingStars, getPieData, getBarData } from './chartUtils';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+// Register the components
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  ArcElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const ReportPage = ({ clientId }) => {
   const [report, setReport] = useState(null);
