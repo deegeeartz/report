@@ -6,6 +6,7 @@ import Fullscreen from 'react-fullscreen-crossbrowser';
 import './ReportPage.css';
 import { calculateStatistics, fetchSurveyData, calculateAverageStatistics } from './utils';
 import { getRatingStars, getPieData, getBarData } from './chartUtils';
+import { downloadReport } from './downloadReport';
 
 const ReportPage = ({ clientId }) => {
   const [report, setReport] = useState(null);
@@ -22,11 +23,12 @@ const ReportPage = ({ clientId }) => {
 
         const averageStats = calculateAverageStatistics(data.surveyReports);
         setAverageStats(averageStats);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
       });
   }, [clientId]);
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
+  };
 
   if (!report || !averageStats) {
     return <div>Loading...</div>;
@@ -50,12 +52,9 @@ const ReportPage = ({ clientId }) => {
     setModalContent(null);
   };
 
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
-
   return (
-    <div className="report-container">
+    <div className="report-container" id="report-container">
+      <button onClick={downloadReport}>Download Report as PDF</button>
       <h1>Survey Report</h1>
       <h2>{report.client}</h2>
       <div className="statistics">
@@ -140,9 +139,9 @@ const ReportPage = ({ clientId }) => {
           </div>
         ))}
       </div>
-      <div>
+      <div id="report-content">
         <h3>Responses</h3>
-        {Object.entries(report.responses).map(([category, questions]) => (
+        {report && Object.entries(report.responses).map(([category, questions]) => (
           <div key={category}>
             <h4>{category}</h4>
             <table>
