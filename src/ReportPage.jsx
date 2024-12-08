@@ -1,19 +1,18 @@
-// src/ReportPage.jsx
 import React, { useEffect, useState } from 'react';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
-import Modal from 'react-modal';
-import Fullscreen from 'react-fullscreen-crossbrowser';
 import './ReportPage.css';
 import { calculateStatistics, fetchSurveyData, calculateAverageStatistics } from './utils';
 import { getRatingStars, getPieData, getBarData } from './chartUtils';
 import { downloadReport } from './downloadReport';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const ReportPage = ({ clientId }) => {
   const [report, setReport] = useState(null);
   const [averageStats, setAverageStats] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     fetchSurveyData()
@@ -26,21 +25,24 @@ const ReportPage = ({ clientId }) => {
       });
   }, [clientId]);
 
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
-
   if (!report || !averageStats) {
     return <div>Loading...</div>;
   }
 
-  const { totalQuestions, yesCount, noCount, naCount } = calculateStatistics(report.responses);
+  const { totalQuestions, yesCount, noCount, categoryStats } = calculateStatistics(report.responses);
   const yesPercentage = ((yesCount / totalQuestions) * 100).toFixed(2);
   const noPercentage = ((noCount / totalQuestions) * 100).toFixed(2);
-  const naPercentage = ((naCount / totalQuestions) * 100).toFixed(2);
 
-  const pieData = getPieData(yesCount, noCount, naCount);
-  const barData = getBarData(yesPercentage, noPercentage, naPercentage, averageStats);
+  const pieData = getPieData(yesCount, noCount);
+  const barData = getBarData(yesPercentage, noPercentage, averageStats);
+
+  const bestCategory = Object.entries(categoryStats).reduce((best, [category, stats]) => {
+    return stats.yesPercentage > best.yesPercentage ? { category, ...stats } : best;
+  }, { yesPercentage: 0 });
+
+  const worstCategory = Object.entries(categoryStats).reduce((worst, [category, stats]) => {
+    return stats.yesPercentage < worst.yesPercentage ? { category, ...stats } : worst;
+  }, { yesPercentage: 100 });
 
   const openModal = (content) => {
     setModalContent(content);
@@ -66,7 +68,6 @@ const ReportPage = ({ clientId }) => {
           <div className="ratings">
             <p>Yes: {yesPercentage}%</p>
             <p>No: {noPercentage}%</p>
-            <p>NA: {naPercentage}%</p>
             <p>Rating: <span className="stars">{getRatingStars(yesPercentage)}</span></p>
             <div className="rating-explanation">
               <p><span className="stars">★★★</span> - 80% and above</p>
@@ -75,141 +76,121 @@ const ReportPage = ({ clientId }) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="comparison">
-        <h3>Anonymous Comparison</h3>
-        <p>This is how you are performing compared to other hospitality ventures:</p>
         <div className="bar-chart-container">
-          <Bar data={barData} />
+          <Bar data={barData} options={{ maintainAspectRatio: false }} />
         </div>
       </div>
       <div className="no-responses">
-        <h3>Questions with "No" Responses</h3>
-        {Object.entries(report.responses).map(([category, questions]) => (
-          <div key={category}>
-            <h4>{category}</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Question</th>
-                  <th>Answer</th>
-                  <th>Image</th>
-                  <th>Video</th>
+        <h3>No Responses</h3>
+        <table className="no-responses-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Question</th>
+              <th>Answer</th>
+              <th>Image</th>
+              <th>Video</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody>
+            {report && Object.entries(report.responses).flatMap(([category, questions]) =>
+              Object.entries(questions).filter(([question, details]) => details.answer === 'no').map(([question, details]) => (
+                <tr key={`${category}-${question}`}>
+                  <td>{category}</td>
+                  <td>{question}</td>
+                  <td>{details.answer}</td>
+                  <td>
+                    {details.image ? (
+                      <img src={details.image} alt="response" onClick={() => openModal(<img src={details.image} alt="response" className="modal-content" />)} />
+                    ) : null}
+                  </td>
+                  <td>
+                    {details.video ? (
+                      <video src={details.video} controls onClick={() => openModal(<video src={details.video} controls className="modal-content" />)} />
+                    ) : <span>No Video</span>}
+                  </td>
+                  <td>{details.comment}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {Object.entries(questions).map(([question, details]) => (
-                  details.answer === 'no' && (
-                    <tr key={question}>
-                      <td>{question}</td>
-                      <td>{details.answer}</td>
-                      <td>
-                        {details.image ? (
-                          <img
-                            src={details.image}
-                            alt="thumbnail"
-                            className="thumbnail"
-                            onClick={() => openModal(<img src={details.image} alt="full" />)}
-                          />
-                        ) : (
-                          <span>No Image</span>
-                        )}
-                      </td>
-                      <td>
-                        {details.video ? (
-                          <video
-                            src={details.video}
-                            className="thumbnail"
-                            onClick={() => openModal(
-                              <video controls>
-                                <source src={details.video} type="video/mp4" />
-                                Your browser does not support the video tag.
-                              </video>
-                            )}
-                          />
-                        ) : (
-                          <span>No Video</span>
-                        )}
-                      </td>
-                    </tr>
-                  )
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))}
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
       <div id="report-content">
         <h3>Responses</h3>
         {report && Object.entries(report.responses).map(([category, questions]) => (
           <div key={category}>
             <h4>{category}</h4>
-            <table>
-              <thead>
-                <tr>
-                  <th>Question</th>
-                  <th>Answer</th>
-                  <th>Image</th>
-                  <th>Video</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.entries(questions).map(([question, details]) => (
-                  <tr key={question}>
-                    <td>{question}</td>
-                    <td>{details.answer}</td>
-                    <td>
-                      {details.image ? (
-                        <img
-                          src={details.image}
-                          alt="thumbnail"
-                          className="thumbnail"
-                          onClick={() => openModal(<img src={details.image} alt="full" />)}
-                        />
-                      ) : (
-                        <span>No Image</span>
-                      )}
-                    </td>
-                    <td>
-                      {details.video ? (
-                        <video
-                          src={details.video}
-                          className="thumbnail"
-                          onClick={() => openModal(
-                            <video controls>
-                              <source src={details.video} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
-                          )}
-                        />
-                      ) : (
-                        <span>No Video</span>
-                      )}
-                    </td>
+            <div id="report-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Answer</th>
+                    <th>Image</th>
+                    <th>Video</th>
+                    <th>Comment</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {Object.entries(questions).map(([question, details]) => (
+                    <tr key={question}>
+                      <td>{question}</td>
+                      <td>{details.answer}</td>
+                      <td>
+                        {details.image ? (
+                          <a href={details.image} target="_blank" rel="noopener noreferrer">
+                            <img src={details.image} alt="response" onClick={() => openModal(<img src={details.image} alt="response" className="modal-content" />)} />
+                          </a>
+                        ) : null}
+                      </td>
+                      <td>
+                        {details.video ? (
+                          <a href={details.video} target="_blank" rel="noopener noreferrer">
+                            <video src={details.video} controls onClick={() => openModal(<video src={details.video} controls className="modal-content" />)} />
+                          </a>
+                        ) : <span>No Video</span>}
+                      </td>
+                      <td>{details.comment}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         ))}
       </div>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        contentLabel="Media Modal"
-        className="modal"
-        overlayClassName="overlay"
-      >
-        <Fullscreen enabled={isFullscreen} onChange={setIsFullscreen}>
-          <div className={`modal-content ${isFullscreen ? 'fullscreen' : ''}`}>
-            {modalContent}
-            <button onClick={toggleFullscreen}>
-              {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
-            </button>
-            <button onClick={closeModal}>Close</button>
-          </div>
-        </Fullscreen>
-      </Modal>
+      <div className="category-performance">
+        <h3>Category Performance</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Yes Percentage</th>
+              <th>No Percentage</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.entries(categoryStats).map(([category, stats]) => (
+              <tr key={category}>
+                <td>{category}</td>
+                <td>{stats.yesPercentage}%</td>
+                <td>{stats.noPercentage}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <h3>Best Performing Category</h3>
+        <p>{bestCategory.category}: {bestCategory.yesPercentage}% Yes</p>
+        <h3>Underperforming Category</h3>
+        <p>{worstCategory.category}: {worstCategory.yesPercentage}% Yes</p>
+      </div>
+      {modalIsOpen && (
+        <div className="modal" onClick={closeModal}>
+          <span className="close" onClick={closeModal}>&times;</span>
+          {modalContent}
+        </div>
+      )}
     </div>
   );
 };

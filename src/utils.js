@@ -1,30 +1,42 @@
 // src/utils.js
 
 // Function to calculate statistics from the responses
-export const calculateStatistics = (responses) => {
+export function calculateStatistics(responses) {
+  const categoryStats = {};
   let totalQuestions = 0;
   let yesCount = 0;
   let noCount = 0;
-  let naCount = 0;
-  let noResponses = [];
 
-  // Iterate through each category and question to count responses
-  for (const category in responses) {
-    for (const question in responses[category]) {
-      totalQuestions++;
-      const answer = responses[category][question].answer;
-      if (answer === 'yes') yesCount++;
-      if (answer === 'no') {
+  Object.entries(responses).forEach(([category, questions]) => {
+    let categoryYesCount = 0;
+    let categoryNoCount = 0;
+    let categoryTotalQuestions = 0;
+
+    Object.entries(questions).forEach(([question, details]) => {
+      if (details.answer === 'yes') {
+        yesCount++;
+        categoryYesCount++;
+        categoryTotalQuestions++;
+      } else if (details.answer === 'no') {
         noCount++;
-        noResponses.push({ category, question });
+        categoryNoCount++;
+        categoryTotalQuestions++;
       }
-      if (answer === 'NA') naCount++;
-    }
-  }
+    });
 
-  // Return the calculated statistics
-  return { totalQuestions, yesCount, noCount, naCount, noResponses };
-};
+    categoryStats[category] = {
+      yesCount: categoryYesCount,
+      noCount: categoryNoCount,
+      totalQuestions: categoryTotalQuestions,
+      yesPercentage: ((categoryYesCount / categoryTotalQuestions) * 100).toFixed(2),
+      noPercentage: ((categoryNoCount / categoryTotalQuestions) * 100).toFixed(2),
+    };
+
+    totalQuestions += categoryTotalQuestions;
+  });
+
+  return { totalQuestions, yesCount, noCount, categoryStats };
+}
 
 // Function to fetch survey data
 export const fetchSurveyData = async () => {
@@ -42,13 +54,11 @@ export const calculateAverageStatistics = (surveyReports) => {
     acc.totalQuestions += stats.totalQuestions;
     acc.yesCount += stats.yesCount;
     acc.noCount += stats.noCount;
-    acc.naCount += stats.naCount;
     return acc;
-  }, { totalQuestions: 0, yesCount: 0, noCount: 0, naCount: 0 });
+  }, { totalQuestions: 0, yesCount: 0, noCount: 0 });
 
-  return {
-    yesPercentage: ((totalStats.yesCount / totalStats.totalQuestions) * 100).toFixed(2),
-    noPercentage: ((totalStats.noCount / totalStats.totalQuestions) * 100).toFixed(2),
-    naPercentage: ((totalStats.naCount / totalStats.totalQuestions) * 100).toFixed(2)
-  };
+  const yesPercentage = ((totalStats.yesCount / totalStats.totalQuestions) * 100).toFixed(2);
+  const noPercentage = ((totalStats.noCount / totalStats.totalQuestions) * 100).toFixed(2);
+
+  return { yesPercentage, noPercentage };
 };

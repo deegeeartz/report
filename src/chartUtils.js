@@ -12,29 +12,33 @@ export const getRatingStars = (percentage) => {
 };
 
 // Function to get pie chart data
-export const getPieData = (yesCount, noCount, naCount) => ({
-  labels: ['Yes', 'No', 'NA'],
-  datasets: [
-    {
-      data: [yesCount, noCount, naCount],
-      backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56']
-    }
-  ]
-});
+export const getPieData = (yesCount, noCount) => {
+  return {
+    labels: ['Yes', 'No'],
+    datasets: [
+      {
+        data: [yesCount, noCount],
+        backgroundColor: ['#36A2EB', '#FF6384'],
+      },
+    ],
+  };
+};
 
 // Function to get bar chart data
-export const getBarData = (yesPercentage, noPercentage, naPercentage, averageStats) => ({
-  labels: ['Yes', 'No', 'NA'],
-  datasets: [
-    {
-      label: 'Your Performance',
-      data: [yesPercentage, noPercentage, naPercentage],
-      backgroundColor: '#36A2EB'
-    },
-    {
-      label: 'Average Performance',
-      data: [averageStats.yesPercentage, averageStats.noPercentage, averageStats.naPercentage],
-      backgroundColor: '#FF6384'
-    }
-  ]
-});
+export const getBarData = (yesPercentage, noPercentage, averageStats) => {
+  return {
+    labels: ['Yes', 'No'],
+    datasets: [
+      {
+        label: 'Current Survey',
+        data: [yesPercentage, noPercentage],
+        backgroundColor: ['#36A2EB', '#FF6384'],
+      },
+      {
+        label: 'Average Survey',
+        data: [averageStats.yesPercentage, averageStats.noPercentage],
+        backgroundColor: ['#FFCE56', '#4BC0C0'],
+      },
+    ],
+  };
+};

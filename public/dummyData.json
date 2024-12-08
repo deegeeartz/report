@@ -5,150 +5,80 @@
       "client": "Hotel Sunshine",
       "responses": {
         "reception": {
-          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
-          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
-          "question3": { "answer": "NA", "image": "", "video": "" },
-          "question4": { "answer": "yes", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "The reception was not welcoming." },
+          "question3": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "no", "image": "", "video": "", "comment": "The receptionist was rude." }
         },
         "roomService": {
-          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question2": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question3": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "Room service was slow." },
+          "question4": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "yes", "image": "", "video": "", "comment": "" }
         },
         "security": {
-          "question1": { "answer": "no", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "NA", "image": "", "video": "" },
-          "question4": { "answer": "yes", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+          "question1": { "answer": "no", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "Security was not visible." },
+          "question2": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question3": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "no", "image": "", "video": "", "comment": "Security was rude." },
+          "question5": { "answer": "yes", "image": "", "video": "", "comment": "" }
         },
-        "cleanliness": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
+        "housekeeping": {
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "" },
+          "question2": { "answer": "no", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "Room was not clean." },
+          "question3": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "no", "image": "", "video": "", "comment": "Housekeeping was late." },
+          "question5": { "answer": "yes", "image": "", "video": "", "comment": "" }
         },
-        "foodService": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
-        },
-        "facilities": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "yes", "image": "", "video": "" },
-          "question5": { "answer": "NA", "image": "", "video": "" }
-        },
-        "staff": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "yes", "image": "", "video": "" },
-          "question5": { "answer": "NA", "image": "", "video": "" }
-        },
-        "amenities": {
-          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
-        },
-        "location": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
-        },
-        "valueForMoney": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+        "dining": {
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "Food was cold." },
+          "question2": { "answer": "yes", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question3": { "answer": "no", "image": "", "video": "", "comment": "Service was slow." },
+          "question4": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "no", "image": "", "video": "", "comment": "Menu was limited." }
         }
       }
     },
     {
       "id": 2,
-      "client": "Resort Paradise",
+      "client": "Hotel Moonlight",
       "responses": {
         "reception": {
-          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "no", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "Reception was not helpful." },
+          "question2": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question3": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "no", "image": "", "video": "", "comment": "Receptionist was rude." },
+          "question5": { "answer": "yes", "image": "", "video": "", "comment": "" }
         },
         "roomService": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "Room service was slow." },
+          "question2": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question3": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "" },
+          "question4": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "no", "image": "", "video": "", "comment": "Room service was not available." }
         },
         "security": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
+          "question1": { "answer": "yes", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question2": { "answer": "no", "image": "", "video": "", "comment": "Security was not visible." },
+          "question3": { "answer": "NA", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "no", "image": "", "video": "", "comment": "Security was rude." }
         },
-        "cleanliness": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+        "housekeeping": {
+          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "Room was not clean." },
+          "question2": { "answer": "yes", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "" },
+          "question3": { "answer": "no", "image": "", "video": "", "comment": "Housekeeping was late." },
+          "question4": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question5": { "answer": "no", "image": "", "video": "", "comment": "Housekeeping was not available." }
         },
-        "foodService": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
-        },
-        "facilities": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
-        },
-        "staff": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
-        },
-        "amenities": {
-          "question1": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
-        },
-        "location": {
-          "question1": { "answer": "yes", "image": "", "video": "" },
-          "question2": { "answer": "no", "image": "https://via.placeholder.com/1920x1080", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "yes", "image": "", "video": "" }
-        },
-        "valueForMoney": {
-          "question1": { "answer": "no", "image": "", "video": "" },
-          "question2": { "answer": "yes", "image": "", "video": "" },
-          "question3": { "answer": "yes", "image": "", "video": "" },
-          "question4": { "answer": "NA", "image": "", "video": "" },
-          "question5": { "answer": "no", "image": "", "video": "" }
+        "dining": {
+          "question1": { "answer": "yes", "image": "https://via.placeholder.com/1920x1080", "video": "", "comment": "" },
+          "question2": { "answer": "no", "image": "", "video": "https://www.w3schools.com/html/mov_bbb.mp4", "comment": "Food was cold." },
+          "question3": { "answer": "yes", "image": "", "video": "", "comment": "" },
+          "question4": { "answer": "no", "image": "", "video": "", "comment": "Service was slow." },
+          "question5": { "answer": "yes", "image": "", "video": "", "comment": "" }
         }
       }
     }
